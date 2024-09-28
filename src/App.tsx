@@ -92,7 +92,10 @@ const App = () => {
     return (
       <Container>
         {user && (
-            <Account setIsStarted={setIsStarted} setIsLoggedOut={setIsLoggedOut} />
+          <Account
+            setIsStarted={setIsStarted}
+            setIsLoggedOut={setIsLoggedOut}
+          />
         )}
         <Card>
           <Loader />
@@ -105,7 +108,10 @@ const App = () => {
     return (
       <Container>
         {user && (
-            <Account setIsStarted={setIsStarted} setIsLoggedOut={setIsLoggedOut} />
+          <Account
+            setIsStarted={setIsStarted}
+            setIsLoggedOut={setIsLoggedOut}
+          />
         )}
         <Card>
           <div>Error:</div>
@@ -136,12 +142,7 @@ const App = () => {
         />
         <Route
           path="/result"
-          element={
-            <Result
-              setIsStarted={setIsStarted}
-              isStarted={isStarted}
-            />
-          }
+          element={<Result setIsStarted={setIsStarted} isStarted={isStarted} />}
         />
         <Route path="*" element={<NotFound />} />
       </Routes>
