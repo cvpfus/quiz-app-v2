@@ -42,7 +42,7 @@ const Account = ({ setIsStarted, setIsLoggedOut }: AccountProps) => {
       <div className="flex flex-col items-end">
         <button
           onClick={handleAccountClick}
-          className="flex items-center gap-2 bg-white rounded-full p-1 cursor-pointer"
+          className="flex items-center gap-2 bg-white rounded-full p-1 cursor-pointer hover:shadow-md"
         >
           <img
             className="size-10 rounded-full border-2 border-gray-500"
