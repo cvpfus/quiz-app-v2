@@ -10,7 +10,7 @@ import "./index.css";
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")!).render(
-  <AuthKitProvider clientId={AUTHKIT_CLIENT_ID}>
+  <AuthKitProvider clientId={AUTHKIT_CLIENT_ID} devMode={false}>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <App />
