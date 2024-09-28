@@ -13,9 +13,7 @@ interface ResultProps {
 const Result = ({ setIsStarted }: ResultProps) => {
   const { storedValue: quiz, removeValue: removeQuiz } =
     useLocalStorage<object[]>("quiz");
-  const {
-    storedValue: user,
-  } = useLocalStorage<object>("user");
+  const { storedValue: user } = useLocalStorage<object>("user");
   const { removeValue: removeTimeLeft } = useLocalStorage<number>("timeLeft");
 
   const navigate = useNavigate();

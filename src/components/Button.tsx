@@ -21,7 +21,11 @@ const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={cn("px-4 py-2 hover:opacity-80 rounded-xl font-bold", buttonVariantClasses[variant], className)}
+      className={cn(
+        "px-4 py-2 hover:opacity-80 rounded-xl font-bold",
+        buttonVariantClasses[variant],
+        className,
+      )}
       {...props}
     >
       {children}

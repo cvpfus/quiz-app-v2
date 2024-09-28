@@ -1,10 +1,10 @@
 import Card from "@/components/Card.tsx";
 import { OctagonX } from "lucide-react";
 import Button from "@/components/Button.tsx";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const NotFound = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <Card>
@@ -12,7 +12,9 @@ const NotFound = () => {
         <OctagonX className="text-red-500" />
         <span>Route Not Found</span>
       </div>
-        <Button className="mt-4" onClick={() => navigate("/")}>Home</Button>
+      <Button className="mt-4" onClick={() => navigate("/")}>
+        Home
+      </Button>
     </Card>
   );
 };

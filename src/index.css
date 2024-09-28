@@ -1,41 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
-    :root {
-        --primary: #FFC700;
-        --secondary: #FF8343;
-    }
+  :root {
+    --primary: #ffc700;
+    --secondary: #ff8343;
+  }
 
-    body {
-        @apply bg-primary;
-    }
+  body {
+    @apply bg-primary;
+  }
 
-    html {
-        font-family: "Inter", sans-serif;
-    }
+  html {
+    font-family: "Inter", sans-serif;
+  }
 
-    h1 {
-        @apply text-5xl font-extrabold;
-    }
+  h1 {
+    @apply text-5xl font-extrabold;
+  }
 
-    h2 {
-        @apply text-4xl font-bold;
-    }
+  h2 {
+    @apply text-4xl font-bold;
+  }
 
-    h3 {
-        @apply text-3xl font-bold;
-    }
+  h3 {
+    @apply text-3xl font-bold;
+  }
 
-    h4 {
-        @apply text-2xl font-bold;
-    }
+  h4 {
+    @apply text-2xl font-bold;
+  }
 
-    h5 {
-        @apply text-xl font-bold;
-    }
+  h5 {
+    @apply text-xl font-bold;
+  }
 }

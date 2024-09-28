@@ -3,7 +3,7 @@ import { useAuth } from "@workos-inc/authkit-react";
 import { useNavigate } from "react-router-dom";
 import Card from "@/components/Card.tsx";
 import toast from "react-hot-toast";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useQuizStore } from "@/hooks/useQuizStore.ts";
 import { useLocalStorage } from "@/hooks/useLocalStorage.ts";
 import Loader from "@/components/Loader.tsx";
