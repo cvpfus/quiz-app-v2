@@ -139,7 +139,7 @@ const App = () => {
           element={
             <Result
               setIsStarted={setIsStarted}
-              setIsLoggedOut={setIsLoggedOut}
+              isStarted={isStarted}
             />
           }
         />

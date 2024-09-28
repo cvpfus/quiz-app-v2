@@ -1,16 +1,16 @@
 import React from "react";
 import { useLocalStorage } from "@/hooks/useLocalStorage.ts";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useQuizStore } from "@/hooks/useQuizStore.ts";
 import Card from "@/components/Card.tsx";
 import Button from "@/components/Button.tsx";
 
 interface ResultProps {
   setIsStarted: React.Dispatch<React.SetStateAction<boolean>>;
-  setIsLoggedOut: React.Dispatch<React.SetStateAction<boolean>>;
+  isStarted: boolean;
 }
 
-const Result = ({ setIsStarted }: ResultProps) => {
+const Result = ({ setIsStarted, isStarted }: ResultProps) => {
   const { storedValue: quiz, removeValue: removeQuiz } =
     useLocalStorage<object[]>("quiz");
   const { storedValue: user } = useLocalStorage<object>("user");
@@ -19,6 +19,8 @@ const Result = ({ setIsStarted }: ResultProps) => {
   const navigate = useNavigate();
 
   const userAnswers = useQuizStore((state) => state.userAnswers);
+
+  if (!isStarted) return <Navigate to="/initial" />;
 
   const totalCorrectAnswers = user.userAnswers.reduce(
     (acc: number, curr: number, i: number) => {
@@ -34,17 +36,6 @@ const Result = ({ setIsStarted }: ResultProps) => {
     removeTimeLeft();
     navigate("/");
   };
-
-  // const handleLogout = () => {
-  //   signOut();
-  //   setIsLoggedOut(true);
-  //   setIsStarted(false);
-  //   clearUserAnswers(setUser);
-  //   removeQuiz();
-  //   removeUser();
-  //   removeTimeLeft();
-  //   navigate("/");
-  // };
 
   return (
     <Card>
