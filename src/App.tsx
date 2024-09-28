@@ -91,6 +91,9 @@ const App = () => {
   if (quizQueryResult.isLoading) {
     return (
       <Container>
+        {user && (
+            <Account setIsStarted={setIsStarted} setIsLoggedOut={setIsLoggedOut} />
+        )}
         <Card>
           <Loader />
         </Card>
@@ -101,6 +104,9 @@ const App = () => {
   if (quizQueryResult.isError) {
     return (
       <Container>
+        {user && (
+            <Account setIsStarted={setIsStarted} setIsLoggedOut={setIsLoggedOut} />
+        )}
         <Card>
           <div>Error:</div>
           <div>{quizQueryResult.error.message}</div>

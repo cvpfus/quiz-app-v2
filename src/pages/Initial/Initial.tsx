@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import Button from "@/components/Button.tsx";
 import { DIFFICULTIES } from "@/constants";
 import Card from "@/components/Card.tsx";
-import { useQuizStore } from "@/hooks/useQuizStore.ts";
 import { useIsFetching } from "@tanstack/react-query";
 import Loader from "@/components/Loader.tsx";
+import { useLocalStorage } from "@/hooks/useLocalStorage.ts";
 
 interface InitialProps {
   handleStart: () => void;
@@ -19,7 +19,7 @@ const Initial = ({ handleStart, isStarted, setDifficulty }: InitialProps) => {
 
   const [difficultyIndex, setDifficultyIndex] = useState(0);
 
-  const username = useQuizStore((state) => state.username);
+  const { storedValue: userFromStorage } = useLocalStorage<object>("user");
 
   const isFetching = useIsFetching();
 
@@ -51,7 +51,7 @@ const Initial = ({ handleStart, isStarted, setDifficulty }: InitialProps) => {
 
   return (
     <Card>
-      <h5 className="mb-6">Hello, {username}!</h5>
+      <h5 className="mb-6">Hello, {userFromStorage.username}!</h5>
 
       <h5 className="mb-3">About this Quiz</h5>
 

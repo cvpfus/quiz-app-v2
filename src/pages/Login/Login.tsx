@@ -54,7 +54,7 @@ const Login = ({ isLoggedOut }: LoginProps) => {
   return (
     <Card>
       <h4>Welcome to Quiz App!</h4>
-      <img className="mt-4 mb-20" src="/quiz-app.png" alt="quiz app logo" />
+      <img className="mt-4 mb-20" src="/quiz-app.svg" alt="quiz app logo" />
       <Button variant="secondary" onClick={handleLogin}>
         Login
       </Button>
