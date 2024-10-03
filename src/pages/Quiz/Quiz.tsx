@@ -9,7 +9,6 @@ import Loader from "@/components/Loader.tsx";
 
 const Quiz = ({ isStarted }: { isStarted: boolean }) => {
   const { storedValue: quiz } = useLocalStorage<object[]>("quiz");
-  const { setValue: setUser } = useLocalStorage<object>("user");
   const {
     storedValue: timeLeft,
     setValue: setTimeLeft,
@@ -64,8 +63,8 @@ const Quiz = ({ isStarted }: { isStarted: boolean }) => {
       allButtons.forEach((button) => {
         button.style.backgroundColor = "var(--secondary)";
       });
-      setCurrentQuestionIdx(userAnswers.length + 1, setUser);
-      addUserAnswer(i, setUser);
+      setCurrentQuestionIdx(userAnswers.length + 1);
+      addUserAnswer(i);
       allButtons.forEach((button) => (button.disabled = false));
     }, 3000);
   };

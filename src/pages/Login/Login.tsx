@@ -5,7 +5,6 @@ import Card from "@/components/Card.tsx";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
 import { useQuizStore } from "@/hooks/useQuizStore.ts";
-import { useLocalStorage } from "@/hooks/useLocalStorage.ts";
 import Loader from "@/components/Loader.tsx";
 
 interface LoginProps {
@@ -17,16 +16,11 @@ const Login = ({ isLoggedOut }: LoginProps) => {
 
   const setUsername = useQuizStore((state) => state.setUsername);
 
-  const { setValue: setUser } = useLocalStorage<object>("user");
-
   const navigate = useNavigate();
 
   useEffect(() => {
     if (user) {
-      setUsername(
-        `${user.firstName}${user.lastName ? user.lastName : ""}`,
-        setUser,
-      );
+      setUsername(`${user.firstName}${user.lastName ? user.lastName : ""}`);
     }
   }, [user]);
 

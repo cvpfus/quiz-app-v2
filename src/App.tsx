@@ -22,8 +22,6 @@ const App = () => {
     setValue: setQuiz,
     removeValue: removeQuiz,
   } = useLocalStorage<object[]>("quiz");
-  const { storedValue: userFromStorage, setValue: setUser } =
-    useLocalStorage<object>("user");
   const { storedValue: timeLeft, removeValue: removeTimeLeft } =
     useLocalStorage<number>("timeLeft");
 
@@ -36,7 +34,7 @@ const App = () => {
   const navigate = useNavigate();
 
   const clearUserAnswers = useQuizStore((state) => state.clearUserAnswers);
-  const initialize = useQuizStore((state) => state.initialize);
+  const currentQuestionIndex = useQuizStore(state => state.currentQuestionIndex);
 
   const { user } = useAuth();
 
@@ -44,7 +42,7 @@ const App = () => {
     try {
       setIsLoggedOut(false);
       setIsStarted(true);
-      clearUserAnswers(setUser);
+      clearUserAnswers();
       await quizQueryResult.refetch();
       removeQuiz();
       navigate("/quiz");
@@ -58,23 +56,11 @@ const App = () => {
   };
 
   useEffect(() => {
-    if (userFromStorage && quiz) {
+    if (quiz) {
       if (timeLeft) setIsStarted(true);
-      if (userFromStorage.currentQuestionIndex >= quiz.length - 1) {
+      if (currentQuestionIndex >= quiz.length - 1) {
         setIsStarted(false);
-        setUser({
-          ...userFromStorage,
-          currentQuestionIndex: 0,
-          userAnswers: [],
-        });
         removeTimeLeft();
-        initialize({
-          ...userFromStorage,
-          currentQuestionIndex: 0,
-          userAnswers: [],
-        });
-      } else {
-        initialize(userFromStorage);
       }
     }
   }, []);

@@ -12,14 +12,13 @@ interface AccountProps {
 const Account = ({ setIsStarted, setIsLoggedOut }: AccountProps) => {
   const { user, signOut } = useAuth();
 
-  const { setValue: setUser, removeValue: removeUser } =
-    useLocalStorage<object>("user");
   const { removeValue: removeQuiz } = useLocalStorage<object[]>("quiz");
   const { removeValue: removeTimeLeft } = useLocalStorage<number>("timeLeft");
 
   const [isClicked, setIsClicked] = useState(false);
 
   const clearUserAnswers = useQuizStore((state) => state.clearUserAnswers);
+  const reset = useQuizStore(state => state.reset);
 
   const handleAccountClick = () => {
     setIsClicked(!isClicked);
@@ -29,9 +28,9 @@ const Account = ({ setIsStarted, setIsLoggedOut }: AccountProps) => {
     signOut();
     setIsStarted(false);
     setIsLoggedOut(true);
-    clearUserAnswers(setUser);
+    clearUserAnswers();
     removeQuiz();
-    removeUser();
+    reset();
     removeTimeLeft();
   };
 

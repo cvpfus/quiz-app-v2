@@ -13,7 +13,6 @@ interface ResultProps {
 const Result = ({ setIsStarted, isStarted }: ResultProps) => {
   const { storedValue: quiz, removeValue: removeQuiz } =
     useLocalStorage<object[]>("quiz");
-  const { storedValue: user } = useLocalStorage<object>("user");
   const { removeValue: removeTimeLeft } = useLocalStorage<number>("timeLeft");
 
   const navigate = useNavigate();
@@ -22,7 +21,7 @@ const Result = ({ setIsStarted, isStarted }: ResultProps) => {
 
   if (!isStarted) return <Navigate to="/initial" />;
 
-  const totalCorrectAnswers = user.userAnswers.reduce(
+  const totalCorrectAnswers = userAnswers.reduce(
     (acc: number, curr: number, i: number) => {
       if (quiz[i].answer_index === curr) return acc + 1;
       else return acc;
